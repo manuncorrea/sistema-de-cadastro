@@ -1,0 +1,35 @@
+[
+  {
+    "nome": "Gabriela",
+    "sobrenome": "Costa",
+    "endereço": "Rua doze, 17 - Centro - Rio de Janeiro - RJ",
+    "telefone": "(21) 96735-8742"
+  },
+
+  {
+    "nome": "Luan",
+    "sobrenome": "Felipe",
+    "endereço": "Rua Alameeda, 20 - Serra - Natal - RN",
+    "telefone": "(84) 98711-8632"
+  },
+
+  {
+    "nome": "Thalita",
+    "sobrenome": "Magalhães",
+    "endereço": "Rua Alecrim, 70 - Centro - Santo Anotio do Amparo - MG",
+    "telefone": "(31) 96532-3257"
+  },
+  {
+    "nome": "José",
+    "sobrenome": "Felipe",
+    "endereço": "Rua Gonsalvez, 07 - Centro - Aparecida de Gôania - GO",
+    "telefone": "(62) 98889-0137"
+  },
+
+  {
+    "nome": "Lucas",
+    "sobrenome": "Gabriel",
+    "endereço": "Rua Antônio de Alburqueque, 24 - Savassi - Belo Horizonte - MG",
+    "telefone": "(31) 99353-4353"
+  }
+]
