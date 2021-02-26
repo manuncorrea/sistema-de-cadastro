@@ -1,10 +1,4 @@
-# Temas Dark e Light
-
-## Dark 
-<img src="./github/dark.png">
-
-## Light
-<img src="./github/light.png">
+# Sistema de Cadastro
 
 **Tecnologias**
 - React
