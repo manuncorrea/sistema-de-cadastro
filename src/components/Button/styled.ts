@@ -13,4 +13,8 @@ export const Container = styled.button`
   margin-top: 16px;
   transition: background-color 0.2s;
 
+  &:hover{
+    background: ${props => props.theme.colors.secundaryHover};
+  }
+
 `;

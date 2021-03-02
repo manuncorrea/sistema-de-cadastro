@@ -20,11 +20,12 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
           <span>manuncorrea</span>
         </div>
         <div>
-          <NavLink className="nav"  activeClassName="selected" to="/" >Cadastrar</NavLink>
+          <NavLink className="nav"  activeClassName="selected" to="/" exact>Cadastrar</NavLink>
           <NavLink className="nav" activeClassName="selected" to="/clients">Clientes</NavLink>
         </div>
-        <div>
-          <Switch
+        <div> 
+          <Switch 
+            className="toogle"
             onChange={toggleTheme}
             checked ={title === 'dark'}
             checkedIcon={false}

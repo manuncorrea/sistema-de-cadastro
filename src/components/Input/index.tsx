@@ -14,6 +14,6 @@ const Input:React.FC<InputProps> = ({ icon: Icon, ...rest }) => {
       <input {...rest}/>
     </Section>
   );
-}
+} 
 
 export default Input;

@@ -6,6 +6,7 @@ export default {
 
       primary: '#081135',
       secundary: '#0962ff',
+      secundaryHover: '#1F74FF',
       background: '#081131',
       accent: '#0e1839',
       primaryInput: '#0e1839',

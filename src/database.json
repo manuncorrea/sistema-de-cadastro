@@ -2,34 +2,49 @@
   {
     "nome": "Gabriela",
     "sobrenome": "Costa",
-    "endereço": "Rua doze, 17 - Centro - Rio de Janeiro - RJ",
+    "cidade": "Rio de Janeiro",
+    "cep": "3689500",
+    "endereço": "Rua doze",
+    "numero": "17",
     "telefone": "(21) 96735-8742"
   },
 
   {
     "nome": "Luan",
     "sobrenome": "Felipe",
-    "endereço": "Rua Alameeda, 20 - Serra - Natal - RN",
+    "cidade": "Natal",
+    "cep": "8950300", 
+    "endereço": "Rua Alameeda",
+    "numero": "20",
     "telefone": "(84) 98711-8632"
   },
 
   {
     "nome": "Thalita",
     "sobrenome": "Magalhães",
-    "endereço": "Rua Alecrim, 70 - Centro - Santo Anotio do Amparo - MG",
+    "cidade": "Santo Anotio do Amparo",
+    "cep": "358976", 
+    "endereço": "Rua Alecrim",
+    "numero": "71",
     "telefone": "(31) 96532-3257"
   },
   {
     "nome": "José",
     "sobrenome": "Felipe",
-    "endereço": "Rua Gonsalvez, 07 - Centro - Aparecida de Gôania - GO",
+    "cidade": "Aparecida de Gôania",
+    "cep": "358976",
+    "endereço": "Rua Gonsalvez",
+    "numero": "69",
     "telefone": "(62) 98889-0137"
   },
 
   {
     "nome": "Lucas",
     "sobrenome": "Gabriel",
-    "endereço": "Rua Antônio de Alburqueque, 24 - Savassi - Belo Horizonte - MG",
+    "cidade": "Belo Horizonte",
+    "cep": "3975640",
+    "endereço": "Rua Antônio de Alburqueque",
+    "numero": "144",
     "telefone": "(31) 99353-4353"
   }
 ]

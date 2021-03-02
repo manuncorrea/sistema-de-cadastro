@@ -15,10 +15,20 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media( max-width: 380px){
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
   div span{
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     color: ${props => props.theme.colors.textSecundary};
+
+    @media(max-width: 380px){
+      font-size: 1rem;
+      font-weight: 600;
+    }
   }
 
   .nav {
@@ -28,11 +38,18 @@ export const Container = styled.div`
     color: ${props => props.theme.colors.textSecundary};
     margin-left: 12px;
 
+    @media(max-width: 380px){
+      font-size: 1rem;
+      font-weight: 500;
+      margin-left: 5px;
+    }
+
   }
 
   .selected {
     color: #fff;
     border-bottom: 0.2rem solid ${props => props.theme.colors.secundary};
   }
+
 `;
 

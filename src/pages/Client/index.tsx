@@ -11,9 +11,9 @@ const Client: React.FC = () => {
           <h2>Tabela de Clientes:</h2>
         </div>
         <Container>
-         
+         <TableCustomers />
         </Container>
-      </Content>
+      </Content>  
     </BoxContent>
   );
 }

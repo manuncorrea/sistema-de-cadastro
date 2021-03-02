@@ -3,7 +3,10 @@ import BoxContent from '../../components/BoxContent';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-import { FiUser, FiUsers, FiHome, FiPhone } from 'react-icons/fi';
+import { FiUser, FiUsers, FiHome, FiGlobe, FiPhone } from 'react-icons/fi';
+import { AiOutlineFieldNumber } from 'react-icons/ai';
+import { FaCity } from 'react-icons/fa';
+
 import { Content, Section, SectionButter } from './styles';
 
 const Register: React.FC = () => {
@@ -20,13 +23,22 @@ const Register: React.FC = () => {
           </div>
 
           <div>
+            <Input name="cep"  type="text" icon={FiGlobe} placeholder="CEP"/>
             <Input name="end"  type="text" icon={FiHome} placeholder="Endereço"/>
+          </div>
+
+          <div>
+            <Input name="number"  type="text" icon={AiOutlineFieldNumber} placeholder="Numero"/>
+            <Input name="city"  type="text" icon={FaCity} placeholder="Cidade"/>
+          </div>
+      
+          <div className="phone">
             <Input name="phone"  type="text" icon={FiPhone} placeholder="Telefone"/>
           </div>
         </Section>
 
       <SectionButter>
-        <Button >Cadastre-se</Button>
+        <Button className="btn" >Cadastre-se</Button>
       </SectionButter>
       
       </Content>

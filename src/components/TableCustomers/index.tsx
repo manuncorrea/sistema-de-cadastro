@@ -9,10 +9,11 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
 import database from '../../database.json';
+import { Container } from './styles';
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 50,
   },
 });
 
@@ -20,30 +21,39 @@ const TableCustomers: React.FC = () => {
   const classes = useStyles();
 
   return(
-    <TableContainer component={Paper}>
-      <Table className={classes.table} size="small" arial-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Nome</TableCell>
-            <TableCell>Sobrenome</TableCell>
-            <TableCell>Endereço</TableCell>
-            <TableCell>Telefone</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {database.map((user) => (
-            <TableRow key={user.nome}>
-              <TableCell component="th" scope="row">
-                {user.nome}
-              </TableCell>
-              <TableCell align="left">{user.sobrenome}</TableCell>
-              <TableCell align="left">{user.endereço}</TableCell>
-              <TableCell align="left">{user.telefone}</TableCell>
+    <Container>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} size="small" arial-label="a dense table">
+          <TableHead>
+            <TableRow className="cabecalho">
+              <TableCell className="cabecalho-text">Nome</TableCell>
+              <TableCell className="cabecalho-text">Sobrenome</TableCell>
+              <TableCell className="cabecalho-text">Cidade</TableCell>
+              <TableCell className="cabecalho-text">CEP</TableCell>
+              <TableCell className="cabecalho-text">Endereço</TableCell>
+              <TableCell className="cabecalho-text">Numero</TableCell>
+              <TableCell className="cabecalho-text">Telefone</TableCell>
+      
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {database.map((user) => (
+              <TableRow key={user.nome}>
+                <TableCell component="th" scope="row">
+                  {user.nome}
+                </TableCell>
+                <TableCell align="left">{user.sobrenome}</TableCell>
+                <TableCell align="left">{user.cidade}</TableCell>
+                <TableCell align="left">{user.cep}</TableCell>
+                <TableCell align="left">{user.endereço}</TableCell>
+                <TableCell align="left">{user.numero}</TableCell>
+                <TableCell align="left">{user.telefone}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
   );
 }
 
