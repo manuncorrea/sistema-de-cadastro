@@ -2,10 +2,10 @@
 <<<<<<< HEAD
 
 *** Dark *** 
-<img src="./github/dark.png">
+<img src="./public/dark.png">
 
 *** Light ***
-<img src="./github/light.png">
+<img src="./public/light.png">
 =======
 >>>>>>> 2837f82a275daa86da261d0d60906e1f062cbe1e
 
