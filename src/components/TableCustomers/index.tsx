@@ -12,17 +12,29 @@ import database from '../../database.json';
 import { Container } from './styles';
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 50,
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%'
   },
+
+  tableContainer: {
+    maxWidth: '90%'
+  },
+
+  table: {
+    minWidth: 650,
+
+  },
+
 });
 
 const TableCustomers: React.FC = () => {
   const classes = useStyles();
 
   return(
-    <Container>
-      <TableContainer component={Paper}>
+    <Container className={classes.container}>
+      <TableContainer component={Paper} className={classes.tableContainer}>
         <Table className={classes.table} size="small" arial-label="a dense table">
           <TableHead>
             <TableRow className="cabecalho">
