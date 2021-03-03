@@ -1,13 +1,12 @@
 # Sistema de Cadastro
-<<<<<<< HEAD
 
-*** Dark *** 
-<img src="./github/dark.png">
 
-*** Light ***
-<img src="./github/light.png">
-=======
->>>>>>> 2837f82a275daa86da261d0d60906e1f062cbe1e
+***Dark*** 
+<img src="./public/dark.png">
+
+***Light***
+<img src="./public/light.png">
+
 
 ## :telescope: Tecnologias:
 - React
