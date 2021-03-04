@@ -15,7 +15,7 @@ export default {
     box: '#fff',
 
     text: '#000',
-    textSecundary: '#33eafa',
+    textSecundary: '#4191e1',
   },
 
 };

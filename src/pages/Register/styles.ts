@@ -30,7 +30,7 @@ export const Content = styled.div`
 
 export const Section = styled.section`
   div{
-    width: 700px;
+    width: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,6 +55,11 @@ export const Section = styled.section`
       justify-content: center;
     }
   }
+
+  /* .teste {
+    display: grid;
+    grid-columns: 1fr 1fr 1fr;
+  } */
 
 `;
 

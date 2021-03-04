@@ -3,7 +3,7 @@ import BoxContent from '../../components/BoxContent';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-import { FiUser, FiUsers, FiHome, FiGlobe, FiPhone } from 'react-icons/fi';
+import { FiUser, FiUsers, FiHome, FiGlobe, FiMapPin, FiPhone } from 'react-icons/fi';
 import { AiOutlineFieldNumber } from 'react-icons/ai';
 import { FaCity } from 'react-icons/fa';
 
@@ -23,13 +23,14 @@ const Register: React.FC = () => {
           </div>
 
           <div>
-            <Input name="cep"  type="text" icon={FiGlobe} placeholder="CEP"/>
-            <Input name="end"  type="text" icon={FiHome} placeholder="Endereço"/>
+            <Input name="Estago"  type="text" icon={FiGlobe} placeholder="Estado"/>
+            <Input name="city"  type="text" icon={FaCity} placeholder="Cidade"/>
           </div>
 
-          <div>
+          <div className="teste">
+            <Input name="bairro"  type="text" icon={FiHome} placeholder="Bairro"/>
+            <Input name="rua"  type="text" icon={FiMapPin} placeholder="Rua"/>
             <Input name="number"  type="text" icon={AiOutlineFieldNumber} placeholder="Numero"/>
-            <Input name="city"  type="text" icon={FaCity} placeholder="Cidade"/>
           </div>
       
           <div className="phone">
