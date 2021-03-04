@@ -40,9 +40,10 @@ const TableCustomers: React.FC = () => {
             <TableRow className="cabecalho">
               <TableCell className="cabecalho-text">Nome</TableCell>
               <TableCell className="cabecalho-text">Sobrenome</TableCell>
+              <TableCell className="cabecalho-text">Estado</TableCell>
               <TableCell className="cabecalho-text">Cidade</TableCell>
-              <TableCell className="cabecalho-text">CEP</TableCell>
-              <TableCell className="cabecalho-text">Endereço</TableCell>
+              <TableCell className="cabecalho-text">Bairro</TableCell>
+              <TableCell className="cabecalho-text">Rua</TableCell>
               <TableCell className="cabecalho-text">Numero</TableCell>
               <TableCell className="cabecalho-text">Telefone</TableCell>
       
