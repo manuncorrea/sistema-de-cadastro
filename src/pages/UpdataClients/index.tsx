@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import BoxContent from '../../components/BoxContent';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -11,8 +10,7 @@ import { FaCity } from 'react-icons/fa';
 import { Content, Section, SectionButter } from './styles';
 import api from '../../services/api';
 
-
-const Register: React.FC = () => {
+const UpdataClients: React.FC = () => {
   const [firstName, setFirstName]  = useState('');
   const [lastName, setLastName] = useState('');
   const [state, setState] = useState('');
@@ -37,18 +35,20 @@ const Register: React.FC = () => {
       phone,
     });
   }
+
  
   return(
     <BoxContent>
       <Content>
         <div className="sub-title">
-          <h2>Cadastre um novo cliente:</h2>
+          <h2>Editar clientes:</h2>
         </div>
         <Section>
           <div>
             <Input 
               onChange={e => setFirstName(e.target.value)} 
               name="firstName"  
+              value={firstName || ''}
               type="text" icon={FiUser} 
               placeholder="Nome"
             />
@@ -112,15 +112,13 @@ const Register: React.FC = () => {
             />
           </div>
           <SectionButter>
-            <Button onClick={CreateUsers} type="submit" className="btn" >Cadastrar</Button>
+            <Button onClick={CreateUsers} type="submit" className="btn" >Salvar</Button>
           </SectionButter>
         </Section>
-
-      
       
       </Content>
     </BoxContent>
   );
 }
 
-export default Register;
+export default UpdataClients;

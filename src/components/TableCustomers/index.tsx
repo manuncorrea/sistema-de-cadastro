@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { MdEdit, MdDeleteForever } from 'react-icons/md';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -8,12 +12,16 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
+
 //import database from '../../database.json';
 import api from '../../services/api';
 
 import { Container } from './styles';
+import { rgb } from 'polished';
+
 
 interface UserProps {
+  _id: string;
   firstName: string;
   lastName: string;
   address: AdressProps;
@@ -47,23 +55,42 @@ const useStyles = makeStyles({
 });
 
 const TableCustomers: React.FC = () => {
+
   const classes = useStyles();
+  const rootRef = React.useRef<HTMLDivElement>(null);
 
   const [users, setUsers] = useState<UserProps[] | null >( null );
 
-  useEffect(() => {
-    api.get('/users').then(response  => {
+  async function ListUsers() {
+   await api.get('/users').then(response  => {
       setUsers(response.data.users)
+      console.log(users)
     })
+  }
+  useEffect(() => {
+    ListUsers()
   }, []);
 
 
+  async function DeleteUsers (id: string) {
+   await api.delete(`users/${id}`).then(() => {
+      ListUsers()
+    })
+  }
+
+  async function UpdateUsers (id: string) {
+    await api.put(`usrs/${id}`).then(() => {
+      ListUsers();
+    })
+  }
 
 
   return(
+    <>
     <Container className={classes.container}>
+       {users  && (
       <TableContainer component={Paper} className={classes.tableContainer}>
-        <Table className={classes.table} size="small" arial-label="a dense table">
+          <Table className={classes.table} size="small" arial-label="a dense table">
           <TableHead>
             <TableRow className="cabecalho">
               <TableCell className="cabecalho-text">Nome</TableCell>
@@ -74,6 +101,8 @@ const TableCustomers: React.FC = () => {
               <TableCell className="cabecalho-text">Rua</TableCell>
               <TableCell className="cabecalho-text">Numero</TableCell>
               <TableCell className="cabecalho-text">Telefone</TableCell>
+              <TableCell className="cabecalho-text">Ações</TableCell>
+
       
             </TableRow>
           </TableHead>
@@ -90,12 +119,30 @@ const TableCustomers: React.FC = () => {
                 <TableCell align="left">{user.address.street}</TableCell>
                 <TableCell align="left">{user.address.number}</TableCell>
                 <TableCell align="left">{user.phone}</TableCell>
+                <TableCell align="left">
+                  <Link to="/updataclients">
+                    <MdEdit />
+                  </Link>
+
+              
+                  <button onClick={() => DeleteUsers(user._id)}>
+                    <MdDeleteForever />
+                  </button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+       
       </TableContainer>
+      )}
+      {!users &&
+        (<h1>nao existe usuarios</h1>)
+      } 
     </Container>
+
+    </>
+    
   );
 }
 

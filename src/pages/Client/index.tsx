@@ -3,6 +3,7 @@ import BoxContent from '../../components/BoxContent';
 import TableCustomers from '../../components/TableCustomers';
 import { Content, Container } from './styles';
 
+
 const Client: React.FC = () => {
   return(
     <BoxContent>
