@@ -11,6 +11,7 @@ import { FaCity } from 'react-icons/fa';
 import { Content, Section, SectionButter } from './styles';
 import api from '../../services/api';
 
+
 const Register: React.FC = () => {
   const [firstName, setFirstName]  = useState('');
   const [lastName, setLastName] = useState('');
@@ -36,8 +37,7 @@ const Register: React.FC = () => {
       phone,
     });
   }
-  console.log(firstName);
-
+ 
   return(
     <BoxContent>
       <Content>

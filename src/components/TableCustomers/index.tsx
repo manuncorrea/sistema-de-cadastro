@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -8,8 +8,25 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
-import database from '../../database.json';
+//import database from '../../database.json';
+import api from '../../services/api';
+
 import { Container } from './styles';
+
+interface UserProps {
+  firstName: string;
+  lastName: string;
+  address: AdressProps;
+  phone: string;
+}
+
+interface AdressProps{
+  state: string;
+  city: string;
+  neighborhood: string;
+  street: string;
+  number: string;
+}
 
 const useStyles = makeStyles({
   container: {
@@ -32,6 +49,17 @@ const useStyles = makeStyles({
 const TableCustomers: React.FC = () => {
   const classes = useStyles();
 
+  const [users, setUsers] = useState<UserProps[] | null >( null );
+
+  useEffect(() => {
+    api.get('/users').then(response  => {
+      setUsers(response.data.users)
+    })
+  }, []);
+
+
+
+
   return(
     <Container className={classes.container}>
       <TableContainer component={Paper} className={classes.tableContainer}>
@@ -50,17 +78,18 @@ const TableCustomers: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {database.map((user) => (
-              <TableRow key={user.nome}>
+            {users && users.map((user) => (
+              <TableRow key={user.firstName}>
                 <TableCell component="th" scope="row">
-                  {user.nome}
+                  {user.firstName}
                 </TableCell>
-                <TableCell align="left">{user.sobrenome}</TableCell>
-                <TableCell align="left">{user.cidade}</TableCell>
-                <TableCell align="left">{user.cep}</TableCell>
-                <TableCell align="left">{user.endereço}</TableCell>
-                <TableCell align="left">{user.numero}</TableCell>
-                <TableCell align="left">{user.telefone}</TableCell>
+                <TableCell align="left">{user.lastName}</TableCell>
+                <TableCell align="left">{user.address.state}</TableCell>
+                <TableCell align="left">{user.address.city}</TableCell>
+                <TableCell align="left">{user.address.neighborhood}</TableCell>
+                <TableCell align="left">{user.address.street}</TableCell>
+                <TableCell align="left">{user.address.number}</TableCell>
+                <TableCell align="left">{user.phone}</TableCell>
               </TableRow>
             ))}
           </TableBody>
