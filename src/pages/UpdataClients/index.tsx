@@ -3,7 +3,15 @@ import BoxContent from '../../components/BoxContent';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-import { FiUser, FiUsers, FiHome, FiGlobe, FiMapPin, FiPhone } from 'react-icons/fi';
+import {
+  FiUser, 
+  FiUsers, 
+  FiHome, 
+  FiGlobe, 
+  FiMapPin, 
+  FiPhone 
+} from 'react-icons/fi';
+
 import { AiOutlineFieldNumber } from 'react-icons/ai';
 import { FaCity } from 'react-icons/fa';
 

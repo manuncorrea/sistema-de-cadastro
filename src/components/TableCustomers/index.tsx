@@ -57,8 +57,7 @@ const useStyles = makeStyles({
 const TableCustomers: React.FC = () => {
 
   const classes = useStyles();
-  const rootRef = React.useRef<HTMLDivElement>(null);
-
+ 
   const [users, setUsers] = useState<UserProps[] | null >( null );
 
   async function ListUsers() {
@@ -120,13 +119,14 @@ const TableCustomers: React.FC = () => {
                 <TableCell align="left">{user.address.number}</TableCell>
                 <TableCell align="left">{user.phone}</TableCell>
                 <TableCell align="left">
-                  <Link to="/updataclients">
-                    <MdEdit />
-                  </Link>
-
+                  <button>
+                    <Link to="/updataclients">
+                      <MdEdit />
+                    </Link>
+                  </button>
               
                   <button onClick={() => DeleteUsers(user._id)}>
-                    <MdDeleteForever />
+                    <MdDeleteForever  />
                   </button>
                 </TableCell>
               </TableRow>

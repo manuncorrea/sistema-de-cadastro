@@ -4,7 +4,17 @@ import BoxContent from '../../components/BoxContent';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-import { FiUser, FiUsers, FiHome, FiGlobe, FiMapPin, FiPhone } from 'react-icons/fi';
+import { 
+  FiUser, 
+  FiUsers, 
+  FiHome, 
+  FiGlobe, 
+  FiMapPin, 
+  FiPhone 
+} from 'react-icons/fi';
+import {toast, ToastContainer, Zoom} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 import { AiOutlineFieldNumber } from 'react-icons/ai';
 import { FaCity } from 'react-icons/fa';
 
@@ -22,23 +32,40 @@ const Register: React.FC = () => {
   const [number, setNumber] = useState('');
   const [phone, setPhone] = useState('');
 
-
   async function CreateUsers() {
-    await api.post('/users/create', {
-      firstName,
-      lastName,
-      address: {
-        state,
-        city,
-        neighborhood,
-        street, 
-        number,
-      },
-      phone,
-    });
-  }
- 
+
+    try{
+      if(!(await api.post('/users/create', {
+        firstName,
+        lastName,
+        address: {
+          state,
+          city,
+          neighborhood,
+          street, 
+          number,
+        },
+        phone,
+      })
+      )){
+        throw Error('');
+      }
+
+      return toast.success('Cliente cadastrado com sucesso!');
+    }
+    catch({ response }){
+          if(!response || !response.data || !response.data.errors){
+            return toast.error('Ocorreu um problema, preencha todos os campos.',  {autoClose: 2000});
+          }
+
+          return toast.error(response.data.errors[0]);
+        }
+      }
+    
+
   return(
+    <>
+    <ToastContainer draggable={false} transition={Zoom} autoClose={8000} />
     <BoxContent>
       <Content>
         <div className="sub-title">
@@ -120,7 +147,10 @@ const Register: React.FC = () => {
       
       </Content>
     </BoxContent>
+    </>
   );
 }
 
 export default Register;
+
+
