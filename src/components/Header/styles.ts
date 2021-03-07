@@ -20,10 +20,13 @@ export const Container = styled.div`
     margin: 0 auto;
   }
 
-  div span{
+  div .logo{
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     color: ${props => props.theme.colors.textSecundary};
+    text-decoration: none;
+  
+   
 
     @media(max-width: 380px){
       font-size: 1rem;

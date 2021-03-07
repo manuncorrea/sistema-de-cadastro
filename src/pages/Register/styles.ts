@@ -35,14 +35,7 @@ export const Section = styled.section`
     align-items: center;
     justify-content: center;
 
-    /**@media(max-width: 1064px){
-      width: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
- 
-    }**/
-
+   
     @media(max-width: 550px){
       width: 300px;
       display: flex;

@@ -11,7 +11,7 @@ const Routes: React.FC = () => {
     <Switch>
       <Route path="/" exact component={Register} />
       <Route path='/clients' component={Client}/>
-      <Route path="/updataclients" component={UpdataClients} />
+      <Route path="/updataclients/:id" component={UpdataClients} />
      </Switch>
   );
 }

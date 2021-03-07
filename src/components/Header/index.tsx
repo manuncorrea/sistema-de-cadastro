@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Switch from 'react-switch';
 import { ThemeContext } from 'styled-components';
 import { shade } from 'polished'; 
@@ -17,7 +18,9 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
     <Navbar>
       <Container>
         <div>
-          <span>manuncorrea</span>
+          <Link className="logo" to="/">
+            manuncorrea
+          </Link>
         </div>
         <div>
           <NavLink className="nav"  activeClassName="selected" to="/" exact>Cadastrar</NavLink>

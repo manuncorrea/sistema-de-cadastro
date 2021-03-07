@@ -12,6 +12,7 @@ import {
   FiMapPin, 
   FiPhone 
 } from 'react-icons/fi';
+
 import {toast, ToastContainer, Zoom} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,9 +21,11 @@ import { FaCity } from 'react-icons/fa';
 
 import { Content, Section, SectionButter } from './styles';
 import api from '../../services/api';
-
+import { useHistory } from 'react-router';
 
 const Register: React.FC = () => {
+  const history = useHistory();
+
   const [firstName, setFirstName]  = useState('');
   const [lastName, setLastName] = useState('');
   const [state, setState] = useState('');
@@ -33,7 +36,6 @@ const Register: React.FC = () => {
   const [phone, setPhone] = useState('');
 
   async function CreateUsers() {
-
     try{
       if(!(await api.post('/users/create', {
         firstName,
@@ -47,20 +49,20 @@ const Register: React.FC = () => {
         },
         phone,
       })
-      )){
+      )) {
         throw Error('');
-      }
+      }history.push(`/clients`)
 
-      return toast.success('Cliente cadastrado com sucesso!');
+      return toast.success('Cliente cadastrado com sucesso!', {autoClose: 2000})
     }
     catch({ response }){
-          if(!response || !response.data || !response.data.errors){
-            return toast.error('Ocorreu um problema, preencha todos os campos.',  {autoClose: 2000});
-          }
-
-          return toast.error(response.data.errors[0]);
-        }
+      if(!response || !response.data || !response.data.errors){
+        return toast.error('Ocorreu um problema, preencha todos os campos.',  {autoClose: 2000});
       }
+
+      return toast.error(response.data.errors[0]);
+    }
+  }
     
 
   return(
@@ -96,6 +98,7 @@ const Register: React.FC = () => {
               icon={FiGlobe} 
               placeholder="Estado"
             />
+              
             <Input 
               onChange={e => setCity(e.target.value)}
               name="city"  
@@ -103,6 +106,7 @@ const Register: React.FC = () => {
               icon={FaCity} 
               placeholder="Cidade"
             />
+              
           </div>
 
           <div>

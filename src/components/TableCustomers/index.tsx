@@ -12,13 +12,9 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
-
-//import database from '../../database.json';
 import api from '../../services/api';
 
 import { Container } from './styles';
-import { rgb } from 'polished';
-
 
 interface UserProps {
   _id: string;
@@ -44,14 +40,14 @@ const useStyles = makeStyles({
   },
 
   tableContainer: {
-    maxWidth: '90%'
+    maxWidth: '98%',
+    maxHeight: 440,
   },
 
   table: {
     minWidth: 650,
-
+    
   },
-
 });
 
 const TableCustomers: React.FC = () => {
@@ -68,7 +64,7 @@ const TableCustomers: React.FC = () => {
   }
   useEffect(() => {
     ListUsers()
-  }, []);
+  });
 
 
   async function DeleteUsers (id: string) {
@@ -77,19 +73,13 @@ const TableCustomers: React.FC = () => {
     })
   }
 
-  async function UpdateUsers (id: string) {
-    await api.put(`usrs/${id}`).then(() => {
-      ListUsers();
-    })
-  }
-
-
+  
   return(
     <>
     <Container className={classes.container}>
        {users  && (
       <TableContainer component={Paper} className={classes.tableContainer}>
-          <Table className={classes.table} size="small" arial-label="a dense table">
+          <Table id="tabela" className={classes.table} size="small" arial-label="a dense table" stickyHeader >
           <TableHead>
             <TableRow className="cabecalho">
               <TableCell className="cabecalho-text">Nome</TableCell>
@@ -100,14 +90,12 @@ const TableCustomers: React.FC = () => {
               <TableCell className="cabecalho-text">Rua</TableCell>
               <TableCell className="cabecalho-text">Numero</TableCell>
               <TableCell className="cabecalho-text">Telefone</TableCell>
-              <TableCell className="cabecalho-text">Ações</TableCell>
-
-      
+              <TableCell className="cabecalho-text">Ações</TableCell> 
             </TableRow>
           </TableHead>
           <TableBody>
             {users && users.map((user) => (
-              <TableRow key={user.firstName}>
+              <TableRow>
                 <TableCell component="th" scope="row">
                   {user.firstName}
                 </TableCell>
@@ -120,7 +108,7 @@ const TableCustomers: React.FC = () => {
                 <TableCell align="left">{user.phone}</TableCell>
                 <TableCell align="left">
                   <button>
-                    <Link to="/updataclients">
+                    <Link to={`/updataclients/${user._id}`}>
                       <MdEdit />
                     </Link>
                   </button>
@@ -137,7 +125,7 @@ const TableCustomers: React.FC = () => {
       </TableContainer>
       )}
       {!users &&
-        (<h1>nao existe usuarios</h1>)
+        (<h1>Não existe usuarios, cadastrados!!</h1>)
       } 
     </Container>
 

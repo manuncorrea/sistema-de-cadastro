@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BoxContent from '../../components/BoxContent';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -17,8 +17,35 @@ import { FaCity } from 'react-icons/fa';
 
 import { Content, Section, SectionButter } from './styles';
 import api from '../../services/api';
+import { useHistory, useParams } from 'react-router';
 
-const UpdataClients: React.FC = () => {
+interface UserProps {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  address: AdressProps;
+  phone: string;
+}
+
+interface AdressProps{
+  state: string;
+  city: string;
+  neighborhood: string;
+  street: string;
+  number: string;
+}
+
+interface UpdateClientsProps{
+  id: string;
+}
+
+
+const UpdataClients: React.FC<UserProps> = () => {
+  const param =  useParams<UpdateClientsProps>()  
+
+  // Redirecionando a rota para tabela de clientes
+  const history = useHistory();
+
   const [firstName, setFirstName]  = useState('');
   const [lastName, setLastName] = useState('');
   const [state, setState] = useState('');
@@ -27,10 +54,33 @@ const UpdataClients: React.FC = () => {
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [phone, setPhone] = useState('');
+  
+ // eslint-disable-next-line
+  const [users, setUsers] = useState<UserProps>();
 
+  // Trazendo os dados do clientes
+  useEffect(() => {
+    api.get(`users/${param.id}`).then(response  => {
+      const user:UserProps = response.data.users;
 
-  async function CreateUsers() {
-    await api.post('/users/create', {
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setState(user.address.state);
+      setCity(user.address.city);
+      setNeighborhood(user.address.neighborhood);
+      setStreet(user.address.street);
+      setNumber(user.address.number);
+      setPhone(user.phone);
+
+     setUsers(response.data.users)
+     console.log(response.data.users)
+     
+   })
+  }, [param.id]);
+ 
+  // Atualizando os dados do cliente
+  async function UpdateUsers(id: string) {
+    await api.put(`users/${id}`, {
       firstName,
       lastName,
       address: {
@@ -42,6 +92,7 @@ const UpdataClients: React.FC = () => {
       },
       phone,
     });
+    history.push(`/clients`) 
   }
 
  
@@ -62,6 +113,7 @@ const UpdataClients: React.FC = () => {
             />
             <Input
              onChange={e => setLastName(e.target.value)}
+             value={lastName || ''}
              name="lastName"  
              type="text" 
              icon={FiUsers} 
@@ -72,6 +124,7 @@ const UpdataClients: React.FC = () => {
           <div>
             <Input 
               onChange={e => setState(e.target.value)}
+              value={state || ''}
               name="state"  
               type="text" 
               icon={FiGlobe} 
@@ -79,6 +132,7 @@ const UpdataClients: React.FC = () => {
             />
             <Input 
               onChange={e => setCity(e.target.value)}
+              value={ city || ''}
               name="city"  
               type="text" 
               icon={FaCity} 
@@ -89,6 +143,7 @@ const UpdataClients: React.FC = () => {
           <div>
             <Input 
               onChange={e => setNeighborhood(e.target.value)}
+              value={ neighborhood || ''}
               name="neighborhood"  
               type="text" 
               icon={FiHome} 
@@ -96,6 +151,7 @@ const UpdataClients: React.FC = () => {
             />
             <Input 
               onChange={e => setStreet(e.target.value)}
+              value={street || ''}
               name="street"  
               type="text" 
               icon={FiMapPin} 
@@ -103,6 +159,7 @@ const UpdataClients: React.FC = () => {
             />
             <Input 
               onChange={e => setNumber(e.target.value)}
+              value={ number || ''}
               name="number"  
               type="text" 
               icon={AiOutlineFieldNumber} 
@@ -113,6 +170,7 @@ const UpdataClients: React.FC = () => {
           <div className="phone">
             <Input 
               onChange={e => setPhone(e.target.value)}
+              value={ phone || ''}
               name="phone"  
               type="text" 
               icon={FiPhone} 
@@ -120,7 +178,7 @@ const UpdataClients: React.FC = () => {
             />
           </div>
           <SectionButter>
-            <Button onClick={CreateUsers} type="submit" className="btn" >Salvar</Button>
+            <Button onClick={() => UpdateUsers(param.id)} type="submit" className="btn" >Salvar</Button>
           </SectionButter>
         </Section>
       
